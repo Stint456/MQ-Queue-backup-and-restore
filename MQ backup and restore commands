@@ -1,0 +1,20 @@
+
+      IBM MQ Backup and Restore of QMGR Configuration
+
+
+QMGR config backup commands:
+#dmpmqcfg -x all -t all -o mqsc -m QMGR1 > /home/username/bkpQmgr/QMGR1_qmgbckup_18102023.config
+#dmpmqcfg -x all -t all -o setmqaut -m QMGR1 > /home/username/bkpQmgr/QMGR1_authbckup_18102023.sh
+
+QMGR config restore command:
+#runmqsc QMGR100 < /home/username/bkpQmgr/QMGR1_qmgbckup_18102023.config > restore.txt
+#./home/username/bkpQmgr/QMGR1_authbckup_18102023.sh
+
+
+
+Queue backup and restore:
+Backup command:
+#/opt/mqm/bin/dmpmqmsg -m QMGR1 -i EAI.QUEUE1.INMAIL.INTERNAL -f createofship(filename) -dA
+
+Restore command:
+#/opt/mqm/bin/dmpmqmsg  -m QMGR100 -o EAI.QUEUE2.OUTMAIL.EXTERNAL -f createofship(filename)
